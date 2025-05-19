@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VERAFLEX</title>
+  <title>VERSAFLEX</title>
 
   <!-- ----------  EMBEDDED  CSS  ---------- -->
   <style>
@@ -23,9 +23,9 @@
     section{max-width:1000px;margin:auto;padding:60px 20px}
     header{padding:0;margin:0}
 
-    header.slideshow{position:relative;max-width:100%;overflow:hidden}
-    .slides img{width:100%;display:none;object-fit:cover;min-height:340px}
-    .slides img.active{display:block;animation:fade 1s ease}
+    header.slideshow{position:relative;max-width:100%;overflow:scroll}
+    .slides img{width:100%;display:none;object-fit:contain;min-height:340px}
+    .slides img.active{display:block;animation:spin 0.2s ease}
     @keyframes fade{from{opacity:0}to{opacity:1}}
 
     .dots{position:absolute;bottom:12px;left:50%;display:flex;gap:8px;transform:translateX(-50%)}
@@ -33,10 +33,6 @@
     .dots button.active{background:#007bff}
     body.dark-mode .dots button{background:#666}
     body.dark-mode .dots button.active{background:#4c9aff}
-
-    .caption{position:absolute;bottom:55px;left:50%;transform:translateX(-50%);font-size:1.1rem;
-             background:rgba(0,0,0,.55);color:#fff;padding:6px 14px;border-radius:4px;display:none}
-    body.dark-mode .caption{background:rgba(255,255,255,.12)}
 
     /* service cards */
     .service-card{margin-bottom:40px}
@@ -62,7 +58,7 @@
 
   <!-- ----------  NAVBAR ---------- -->
   <nav>
-    <h1>VERAFLEX</h1>
+    <h1>VERSAFLEX</h1>
     <ul>
       <li><a href="#about">About Us</a></li>
       <li><a href="#services">Services</a></li>
@@ -74,13 +70,12 @@
   <!-- ----------  HERO / SLIDESHOW  ---------- -->
   <header class="slideshow">
     <div class="slides">
-      <img src="versawebsite/slide1.png" alt="slide1" class="active">
-      <img src="versawebsite/slide2.png" alt="slide2    ">
-      <img src="versawebsite/slide3.png" alt="slide3">
-      <img src="versawebsite/slide4.png" alt="slide4">
-      <img src="versawebsite/slide5.png" alt="slide5">
+      <img src="https://github.com/atlascortigan9703/versa.github.io/blob/main/slide1.png?raw=true" alt="slide1" class="active">
+      <img src="https://github.com/atlascortigan9703/versa.github.io/blob/main/slide2.png?raw=true" alt="slide2">
+      <img src="https://github.com/atlascortigan9703/versa.github.io/blob/main/slide3.png?raw=true" alt="slide3">
+      <img src="https://github.com/atlascortigan9703/versa.github.io/blob/main/slide4.png?raw=true" alt="slide4">
+      <img src="https://github.com/atlascortigan9703/versa.github.io/blob/main/slide5.png?raw=true" alt="slide5">
     </div>
-    <div class="caption"></div>
     <div class="dots"></div>
   </header>
 
@@ -104,14 +99,13 @@ Thank you for considering us as your trusted partner. Let's embark on this journ
       <h3>ISO Conversion Tool</h3>
       <p>
         ISO 20022 messages are typically formatted in XML, but some legacy systems or protocols might use different formats. Conversion tools can help translate ISO 20022 messages into other formats, such as SWIFT MT (Message Type) messages or proprietary message formats vice versa.
-
       </p>
     </div>
 
     <div class="service-card">
       <h3>Reconciliation Tool</h3>
       <p>
-      A Bank Inward and Outward Transactions Reconciliation Tool is a software application used by banks to reconcile and manage financial transactions between different branches of the same bank. The primary purpose of this tool is to ensure accuracy and consistency in the financial records of the bank by reconciling incoming and outgoing transactions among its various branches.
+        A Bank Inward and Outward Transactions Reconciliation Tool is a software application used by banks to reconcile and manage financial transactions between different branches of the same bank. The primary purpose of this tool is to ensure accuracy and consistency in the financial records of the bank by reconciling incoming and outgoing transactions among its various branches.
       </p>
     </div>
 
@@ -160,14 +154,7 @@ Thank you for considering us as your trusted partner. Let's embark on this journ
     (function(){
       const imgs=document.querySelectorAll('.slides img');
       const dotsBox=document.querySelector('.dots');
-      const caption=document.querySelector('.caption');
-      const captions=[
-        'Modern payments. Simplified.',
-        'ISO 20022 Conversion Made Easy',
-        'Trustworthy Reconciliation Tools',
-        'Innovation & Consulting',
-        'Future‑ready banking tech'
-      ];
+
       let idx=0,timer;
 
       imgs.forEach((_,i)=>{
@@ -183,8 +170,6 @@ Thank you for considering us as your trusted partner. Let's embark on this journ
         idx=n;
         imgs[idx].classList.add('active');
         dotsBox.children[idx].classList.add('active');
-        caption.textContent=captions[idx];
-        caption.style.display=captions[idx]? 'block':'none';
         if(manual){reset();}
       }
       function next(){show((idx+1)%imgs.length);} 
